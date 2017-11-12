@@ -24,7 +24,7 @@ public class MovieService {
     return movie;
   }
 
-  public Movie getMovieByTitle(String title){
+  public Movie getMovieByTitle(String title) {
     Movie movie = movieRepository.findByTitle(title);
     if (movie == null) {
       throw new EntityNotFoundException();
@@ -34,7 +34,7 @@ public class MovieService {
 
   public Movie saveMovie(Movie movie) {
     Movie movieOnDb = movieRepository.findByTitle(movie.getTitle());
-    if(movieOnDb!=null){
+    if (movieOnDb != null) {
       throw new EntityAlreadyExistsException("title");
     }
     return movieRepository.save(movie);

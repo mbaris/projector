@@ -1,18 +1,50 @@
 package io.baris.projector.api.movie.dto;
 
 import io.baris.projector.movie.Movie;
+import java.util.Objects;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class MovieDto {
 
-  @NotBlank
-  private String title;
-
-  public MovieDto() {
+  public MovieDto(){
   }
 
-  public MovieDto(String title) {
-    this.title = title;
+  public MovieDto(Movie movie){
+    this.id = movie.getId();
+    this.title = movie.getTitle();
+    this.plot = movie.getPlot();
+    this.year = movie.getYear();
+    this.genre = movie.getGenre();
+    this.director = movie.getDirector();
+    this.posterImageUri = movie.getPosterImageUri();
+    this.producer = movie.getProducer();
+  }
+
+  private String id;
+
+  @NotBlank
+  @Length(min = 1, max = 64)
+  private String title;
+
+  private String plot;
+
+  private Integer year;
+
+  private String genre;
+
+  private String director;
+
+  private String posterImageUri;
+
+  private String producer;
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getTitle() {
@@ -23,7 +55,103 @@ public class MovieDto {
     this.title = title;
   }
 
+
+  public String getPlot() {
+    return plot;
+  }
+
+  public void setPlot(String plot) {
+    this.plot = plot;
+  }
+
+  public Integer getYear() {
+    return year;
+  }
+
+  public void setYear(Integer year) {
+    this.year = year;
+  }
+
+  public String getGenre() {
+    return genre;
+  }
+
+  public void setGenre(String genre) {
+    this.genre = genre;
+  }
+
+  public String getDirector() {
+    return director;
+  }
+
+  public void setDirector(String director) {
+    this.director = director;
+  }
+
+  public String getPosterImageUri() {
+    return posterImageUri;
+  }
+
+  public void setPosterImageUri(String posterImageUri) {
+    this.posterImageUri = posterImageUri;
+  }
+
+  public String getProducer() {
+    return producer;
+  }
+
+  public void setProducer(String producer) {
+    this.producer = producer;
+  }
+
   public Movie toMovie() {
-    return new Movie(title);
+    Movie movie = new Movie();
+    movie.setTitle(title);
+    movie.setPlot(plot);
+    movie.setYear(year);
+    movie.setGenre(genre);
+    movie.setDirector(director);
+    movie.setPosterImageUri(posterImageUri);
+    movie.setProducer(producer);
+    return movie;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    MovieDto movieDto = (MovieDto) o;
+    return Objects.equals(title, movieDto.title) &&
+        Objects.equals(id, movieDto.id) &&
+        Objects.equals(plot, movieDto.plot) &&
+        Objects.equals(year, movieDto.year) &&
+        Objects.equals(genre, movieDto.genre) &&
+        Objects.equals(director, movieDto.director) &&
+        Objects.equals(posterImageUri, movieDto.posterImageUri) &&
+        Objects.equals(producer, movieDto.producer);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(title, id, plot, year, genre, director, posterImageUri, producer);
+  }
+
+  @Override
+  public String toString() {
+    final StringBuffer sb = new StringBuffer("MovieDto{");
+    sb.append("title='").append(title).append('\'');
+    sb.append(", id='").append(id).append('\'');
+    sb.append(", plot='").append(plot).append('\'');
+    sb.append(", year=").append(year);
+    sb.append(", genre='").append(genre).append('\'');
+    sb.append(", director='").append(director).append('\'');
+    sb.append(", posterImageUri='").append(posterImageUri).append('\'');
+    sb.append(", producer='").append(producer).append('\'');
+    sb.append('}');
+    return sb.toString();
   }
 }
