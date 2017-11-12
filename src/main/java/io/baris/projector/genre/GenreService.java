@@ -18,7 +18,7 @@ public class GenreService {
   public Genre getGenre(String id) {
     Genre genre = genreRepository.findOne(id);
     if (genre == null) {
-      throw new EntityNotFoundException(Genre.class);
+      throw new EntityNotFoundException();
     }
     return genre;
   }
@@ -30,7 +30,7 @@ public class GenreService {
   public void removeGenre(String id) {
     Genre genre = genreRepository.findOne(id);
     if (genre == null) {
-      throw new EntityNotFoundException(Genre.class);
+      throw new EntityNotFoundException();
     }
     genreRepository.delete(id);
   }
