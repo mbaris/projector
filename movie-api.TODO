@@ -1,8 +1,8 @@
 Repository:
   ✔ movie repository mock @done (17-11-12 18:02)
-  ☐ actual movie repository @high-priority @jpa-dependency @derby-dependency
+  ✔ actual movie repository @high-priority @jpa-dependency @mongo-db-dependency @done (17-11-12 20:19)
 
-  ☐ genre repository
+  ✔ genre repository @done (17-11-12 20:19)
   ☐ review repository
   ☐ movie watched event
   ☐ user repository

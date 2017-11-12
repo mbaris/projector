@@ -1,6 +1,5 @@
 package io.baris.projector.movie;
 
-import io.baris.projector.api.movie.dto.MovieDto;
 import io.baris.projector.exception.EntityNotFoundException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +12,27 @@ public class MovieService {
   private MovieRepository movieRepository;
 
   public List<Movie> getAllMovies() {
-    return movieRepository.findAllMovies();
+    return movieRepository.findAll();
   }
 
   public Movie getMovie(String id) {
-    return movieRepository.findMovieById(id)
-        .orElseThrow(() -> new EntityNotFoundException(Movie.class));
-  }
-
-  public Movie getMovieWithTitle(String title) {
-    return movieRepository.findMovieById(title)
-        .orElseThrow(() -> new EntityNotFoundException(Movie.class));
+    Movie movie = movieRepository.findOne(id);
+    if (movie == null) {
+      throw new EntityNotFoundException(Movie.class);
+    }
+    return movie;
   }
 
   public Movie saveMovie(Movie movie) {
-    return movieRepository.saveMovie(movie);
+    return movieRepository.save(movie);
   }
 
-  public Movie removeMovie(String id) {
-    return movieRepository.removeMovieById(id)
-        .orElseThrow(() -> new EntityNotFoundException(Movie.class));
+  public void removeMovie(String id) {
+    Movie movie = movieRepository.findOne(id);
+    if (movie == null) {
+      throw new EntityNotFoundException(Movie.class);
+    }
+    movieRepository.delete(id);
   }
 
 }

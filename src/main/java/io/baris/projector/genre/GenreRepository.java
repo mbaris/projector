@@ -1,9 +1,9 @@
-package io.baris.projector.movie;
+package io.baris.projector.genre;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-interface MovieRepository extends MongoRepository<Movie, String> {
+interface GenreRepository extends MongoRepository<Genre, String> {
 
 }
