@@ -1,5 +1,6 @@
 Repository:
-  ☐ movie repository @high-priority @jpa-dependency @derby-dependency
+  ✔ movie repository mock @done (17-11-12 18:02)
+  ☐ actual movie repository @high-priority @jpa-dependency @derby-dependency
 
   ☐ genre repository
   ☐ review repository
@@ -7,10 +8,10 @@ Repository:
   ☐ user repository
   
 Service:
-  ☐ movie service @high-priority
+  ✔ movie service @high-priority @done (17-11-12 18:02)
 
 Controller:
   
-  ☐ movie controller @high-priority @spring-web-dependency
+  ✔ movie controller @high-priority @spring-web-dependency @done (17-11-12 18:02)
   ☐ token based authentication
   ☐ spring security
