@@ -1,0 +1,16 @@
+Repository:
+  ☐ movie repository @high-priority @jpa-dependency @derby-dependency
+
+  ☐ genre repository
+  ☐ review repository
+  ☐ movie watched event
+  ☐ user repository
+  
+Service:
+  ☐ movie service @high-priority
+
+Controller:
+  
+  ☐ movie controller @high-priority @spring-web-dependency
+  ☐ token based authentication
+  ☐ spring security
