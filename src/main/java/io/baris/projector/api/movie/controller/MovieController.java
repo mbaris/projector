@@ -2,10 +2,10 @@ package io.baris.projector.api.movie.controller;
 
 import io.baris.projector.api.movie.dto.MovieDto;
 import io.baris.projector.api.response.SuccessResponse;
-import io.baris.projector.movie.Movie;
 import io.baris.projector.movie.MovieService;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,8 +26,11 @@ public class MovieController {
   private MovieService movieService;
 
   @GetMapping
-  public Callable<List<Movie>> list() {
-    return () -> movieService.getAllMovies();
+  public Callable<List<MovieDto>> list() {
+    return () -> movieService.getAllMovies()
+        .stream()
+        .map(MovieDto::new)
+        .collect(Collectors.toList());
   }
 
   @GetMapping("/{id}")

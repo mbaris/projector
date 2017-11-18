@@ -7,10 +7,21 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class MovieDto {
 
-  public MovieDto(){
+  private String id;
+  @NotBlank
+  @Length(min = 1, max = 64)
+  private String title;
+  private String plot;
+  private Integer year;
+  private String genre;
+  private String director;
+  private String posterImageUri;
+  private String producer;
+
+  public MovieDto() {
   }
 
-  public MovieDto(Movie movie){
+  public MovieDto(Movie movie) {
     this.id = movie.getId();
     this.title = movie.getTitle();
     this.plot = movie.getPlot();
@@ -20,24 +31,6 @@ public class MovieDto {
     this.posterImageUri = movie.getPosterImageUri();
     this.producer = movie.getProducer();
   }
-
-  private String id;
-
-  @NotBlank
-  @Length(min = 1, max = 64)
-  private String title;
-
-  private String plot;
-
-  private Integer year;
-
-  private String genre;
-
-  private String director;
-
-  private String posterImageUri;
-
-  private String producer;
 
   public String getId() {
     return id;

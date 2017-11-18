@@ -11,21 +11,28 @@ public class Movie {
   @Id
   @Indexed
   private String id;
-
   @Indexed
   private String title;
-
   private String plot;
-
   private Integer year;
-
   private String genre;
-
   private String director;
-
   private String posterImageUri;
-
   private String producer;
+
+  public Movie() {
+  }
+
+  public Movie(Movie movie) {
+    this.id = movie.getId();
+    this.title = movie.getTitle();
+    this.plot = movie.getPlot();
+    this.year = movie.getYear();
+    this.genre = movie.getGenre();
+    this.director = movie.getDirector();
+    this.posterImageUri = movie.getPosterImageUri();
+    this.producer = movie.getProducer();
+  }
 
   public String getId() {
     return id;
@@ -129,4 +136,6 @@ public class Movie {
     sb.append('}');
     return sb.toString();
   }
+
+
 }
