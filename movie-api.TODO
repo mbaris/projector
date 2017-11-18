@@ -1,17 +1,21 @@
 Repository:
   ✔ movie repository mock @done (17-11-12 18:02)
   ✔ actual movie repository @high-priority @jpa-dependency @mongo-db-dependency @done (17-11-12 20:19)
+  ✔ embedded mongod @done (17-11-18 23:23)
 
-  ✔ genre repository @done (17-11-12 20:19)
+  ☐ genre repository
   ☐ review repository
   ☐ movie watched event
   ☐ user repository
+  ☐ watch lists
   
 Service:
   ✔ movie service @high-priority @done (17-11-12 18:02)
+  ✔ movie service unit tests @done (17-11-18 23:22)
 
 Controller:
   
   ✔ movie controller @high-priority @spring-web-dependency @done (17-11-12 18:02)
+  ✔ movie controller tests @done (17-11-18 23:23)
   ☐ token based authentication
   ☐ spring security

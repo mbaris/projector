@@ -19,8 +19,8 @@ import io.baris.projector.api.movie.dto.MovieDto;
 import io.baris.projector.api.movie.fixture.EntityTestUtil;
 import io.baris.projector.api.response.SuccessResponse;
 import io.baris.projector.api.test.RestControllerTest;
-import io.baris.projector.movie.Movie;
 import io.baris.projector.movie.MovieService;
+import io.baris.projector.movie.model.Movie;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -91,6 +91,22 @@ public class MovieControllerTest extends RestControllerTest {
     MovieDto movieResponse = (MovieDto) result;
     assertThat(movieResponse, is(equalTo(new MovieDto(movie))));
     verify(movieService).getMovie(randomId);
+  }
+
+  @Test
+  public void getMovieWithTitle() throws Exception {
+    Movie movie = EntityTestUtil.randomMovie();
+
+    when(movieService.getMovieByTitle(movie.getTitle())).thenReturn(movie);
+    Object result = mvc.perform(get(BASE_PATH + "/" + movie.getTitle() + "?identifierType=title")
+        .contentType(MediaType.APPLICATION_JSON_UTF8))
+        .andExpect(status().isOk())
+        .andReturn().getAsyncResult();
+
+    assertThat(result, is(instanceOf(MovieDto.class)));
+    MovieDto movieResponse = (MovieDto) result;
+    assertThat(movieResponse, is(equalTo(new MovieDto(movie))));
+    verify(movieService).getMovieByTitle(movie.getTitle());
   }
 
   @Test

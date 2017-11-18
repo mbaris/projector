@@ -2,6 +2,7 @@ package io.baris.projector.movie;
 
 import io.baris.projector.exception.EntityAlreadyExistsException;
 import io.baris.projector.exception.EntityNotFoundException;
+import io.baris.projector.movie.model.Movie;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

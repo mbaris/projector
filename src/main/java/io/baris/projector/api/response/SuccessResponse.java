@@ -12,10 +12,6 @@ public class SuccessResponse {
     return message;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
   @Override
   public String toString() {
     final StringBuffer sb = new StringBuffer("SuccessResponse{");

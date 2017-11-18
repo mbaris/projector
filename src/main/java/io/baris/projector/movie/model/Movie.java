@@ -1,4 +1,4 @@
-package io.baris.projector.movie;
+package io.baris.projector.movie.model;
 
 import java.util.Objects;
 import org.springframework.data.annotation.Id;

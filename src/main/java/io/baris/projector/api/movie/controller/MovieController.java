@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,9 +34,15 @@ public class MovieController {
         .collect(Collectors.toList());
   }
 
-  @GetMapping("/{id}")
-  public Callable<MovieDto> getWithId(@PathVariable String id) {
-    return () -> new MovieDto(movieService.getMovie(id));
+  @GetMapping("/{identifier}")
+  public Callable<MovieDto> getWithId(@PathVariable String identifier,
+      @RequestParam(defaultValue = "id") String identifierType) {
+    return () -> {
+      if ("title".equals(identifierType)) {
+        return new MovieDto(movieService.getMovieByTitle(identifier));
+      }
+      return new MovieDto(movieService.getMovie(identifier));
+    };
   }
 
   @PostMapping
@@ -48,7 +55,7 @@ public class MovieController {
   public Callable<SuccessResponse> delete(@PathVariable String id) {
     return () -> {
       movieService.removeMovie(id);
-      return new SuccessResponse("Entity with id: [" + id + "] deleted successfuly");
+      return new SuccessResponse("Entity with id: [" + id + "] deleted successfully");
     };
   }
 

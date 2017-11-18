@@ -1,21 +1,39 @@
 package io.baris.projector.api.movie.dto;
 
-import io.baris.projector.movie.Movie;
+import io.baris.projector.movie.model.Movie;
 import java.util.Objects;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
 public class MovieDto {
 
   private String id;
+
   @NotBlank
   @Length(min = 1, max = 64)
   private String title;
+
+  @Length(min = 1, max = 280)
   private String plot;
+
+  @Min(1900)
+  @Max(2100)
   private Integer year;
+
+  @Length(min = 1, max = 280)
   private String genre;
+
+  @Length(min = 1, max = 280)
   private String director;
+
+  @URL
+  @Length(min = 6, max = 280)
   private String posterImageUri;
+
+  @Length(min = 1, max = 280)
   private String producer;
 
   public MovieDto() {

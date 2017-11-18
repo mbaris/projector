@@ -1,6 +1,6 @@
 package io.baris.projector.api.movie.fixture;
 
-import io.baris.projector.movie.Movie;
+import io.baris.projector.movie.model.Movie;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
